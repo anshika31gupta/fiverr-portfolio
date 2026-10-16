@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website &amp; web-app bug fixing, with before/after proof</title>
+<meta name="description" content="Student developer who finds real bugs, fixes them and shows before/after proof. Case studies are self-audits of my own projects. Order on Fiverr.">
+<meta property="og:title" content="Bug fixing with before/after proof">
+<meta property="og:description" content="Reproduce, fix, prove. Two self-audit case studies on GitHub.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/proof-1-after.png">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="#top">YOUR_FULL_NAME</a>
+  <a class="btn" data-fiverr href="#" rel="noopener">Order on Fiverr</a>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>I find real bugs, fix them, and show you the proof.</h1>
+      <p class="sub">Website and web-app bug fixing. Every fix comes with a before and after you can check yourself.</p>
+      <div class="cta">
+        <a class="btn" data-fiverr href="#" rel="noopener">Order on Fiverr</a>
+        <a class="btn ghost" href="#proof">See the proof</a>
+      </div>
+    </div>
+    <div class="term" role="img" aria-label="Terminal showing a signup returning 409 before the fix and 201 after, and a double payment of 100 giving 100100 before and 200 after">
+<pre id="term"><span class="l dim">$ node test.js original</span>
+<span class="l">signup, brand-new email   -> <b class="red">409 Email already exists</b></span>
+<span class="l">pay "100" twice          -> total_paid = <b class="red">100100</b></span>
+<span class="l dim">$ node test.js fixed</span>
+<span class="l">signup, brand-new email   -> <b class="grn">201 created</b></span>
+<span class="l">pay "100" twice          -> total_paid = <b class="grn">200</b></span></pre>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <h2>How I work</h2>
+  <ol class="steps">
+    <li><h3>Reproduce</h3><p>I run the app and trigger the bug on purpose, so we both know it is real.</p></li>
+    <li><h3>Fix</h3><p>I change the smallest amount of code needed and keep the rest alone.</p></li>
+    <li><h3>Prove</h3><p>I run the same test again and show you the before and after.</p></li>
+  </ol>
+</section>
+
+<section class="wrap" id="proof">
+  <h2>Proof gallery</h2>
+  <p class="note">These come from self-audits of my own projects, not client work. Click an image to enlarge.</p>
+
+  <figure class="pair" data-pair>
+    <figcaption>InvoiceAI: same test script, run on the original and then the fixed code</figcaption>
+    <div class="toggle" role="group" aria-label="Choose version">
+      <button class="tag red on" data-show="before" aria-pressed="true">BEFORE</button>
+      <button class="tag grn" data-show="after" aria-pressed="false">AFTER</button>
+    </div>
+    <button class="zoom" data-zoom><img data-img="before" src="assets/proof-1-before.png" width="1280" height="769" loading="lazy" alt="InvoiceAI terminal on the original code: signup returns 409, forged token accepted with 200, paying 100 twice gives total_paid 100100"></button>
+    <button class="zoom" data-zoom hidden><img data-img="after" src="assets/proof-1-after.png" width="1280" height="769" loading="lazy" alt="InvoiceAI terminal on the fixed code: signup returns 201, forged token rejected with 401, paying 100 twice gives 200"></button>
+  </figure>
+
+  <figure class="pair">
+    <figcaption>BenefitFlow: duplicate claim, invalid status and invalid amount</figcaption>
+    <span class="tag red">BEFORE</span> <span class="tag grn">AFTER</span>
+    <button class="zoom" data-zoom><img src="assets/proof-2-benefitflow.png" width="1280" height="769" loading="lazy" alt="BenefitFlow before and after: duplicate claim accepted then blocked with 409, status Bogus accepted then rejected with 400, amount abc accepted then rejected with 400"></button>
+  </figure>
+</section>
+
+<section class="wrap" id="cases">
+  <h2>Two case studies</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>BenefitFlow</h3>
+      <p class="stack">React, Express, Prisma, PostgreSQL</p>
+      <dl class="stats">
+        <div><dt>found</dt><dd data-count="11">11</dd></div>
+        <div><dt>reproduced</dt><dd data-count="10">10</dd></div>
+        <div><dt>fixed</dt><dd data-count="9">9</dd></div>
+      </dl>
+      <ul>
+        <li>Postgres migration failed with <code>type "datetime" does not exist</code>. After the fix, all 9 tables are created.</li>
+        <li>File upload through the proxy: HTTP 500, then HTTP 200.</li>
+        <li>Duplicate claims and invalid status were accepted. Now rejected.</li>
+      </ul>
+      <a class="link" data-github="benefitflow/" href="#" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="card">
+      <h3>InvoiceAI</h3>
+      <p class="stack">Node.js, Express, SQLite</p>
+      <dl class="stats">
+        <div><dt>found</dt><dd data-count="18">18</dd></div>
+        <div><dt>reproduced</dt><dd data-count="14">14</dd></div>
+        <div><dt>fixed</dt><dd data-count="17">17</dd></div>
+      </dl>
+      <ul>
+        <li>Signup for a new email: 409 Email already exists, then 201 created.</li>
+        <li>Paying "100" twice: total_paid 100100, then 200.</li>
+        <li>Forged login token: accepted (200), then rejected (401).</li>
+        <li>Another user's client data on an invoice: now 400.</li>
+      </ul>
+      <p class="stack">14 of the 17 fixes have before/after proof.</p>
+      <a class="link" data-github="invoiceai/" href="#" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+  </div>
+</section>
+
+<section class="wrap" id="fix">
+  <h2>What I can fix</h2>
+  <ul class="chips">
+    <li>API errors</li><li>Database and migration problems</li><li>Broken forms and uploads</li><li>Validation and security gaps</li><li>Login and auth bugs</li>
+  </ul>
+</section>
+
+<section class="wrap" id="packages">
+  <h2>Packages</h2>
+  <div class="cards three">
+    <a class="card pkg" data-fiverr href="#" rel="noopener"><h3>Basic</h3><p class="price">starting at $15</p><p>Single bug fix</p></a>
+    <a class="card pkg" data-fiverr href="#" rel="noopener"><h3>Standard</h3><p class="price">starting at $40</p><p>Up to 3 bugs, with proof</p></a>
+    <a class="card pkg" data-fiverr href="#" rel="noopener"><h3>Premium</h3><p class="price">starting at $90</p><p>App audit with a written report</p></a>
+  </div>
+</section>
+
+<section class="wrap" id="faq">
+  <h2>FAQ</h2>
+  <details><summary>What do I need from you?</summary><p>A description of the bug, the steps that trigger it, and access to the code through Fiverr. Screenshots or error messages help a lot.</p></details>
+  <details><summary>How long does it take?</summary><p>EDIT: write your real turnaround here, for example per package.</p></details>
+  <details><summary>Do you work on production sites?</summary><p>EDIT: write your real policy here. Fiverr messages are the place to agree on this before work starts.</p></details>
+  <details><summary>What if you cannot find the bug?</summary><p>EDIT: write what you will do, for example explain what you tried and what you ruled out.</p></details>
+  <details><summary>Are revisions included?</summary><p>EDIT: match this to the revisions set in your Fiverr gig.</p></details>
+</section>
+
+<section class="wrap" id="honest">
+  <h2>What I did not verify</h2>
+  <ul>
+    <li>Both case studies are self-audits of my own projects. They are not client work.</li>
+    <li>BenefitFlow: of 11 issues, 10 were reproduced and 9 were fixed.</li>
+    <li>InvoiceAI: of 18 issues, 14 were reproduced against the running server and 17 were fixed, 14 of them with before/after proof.</li>
+    <li>EDIT: replace or extend these lines with the wording from the "not verified" sections of your READMEs.</li>
+  </ul>
+</section>
+</main>
+
+<footer><a data-github="" href="#" target="_blank" rel="noopener">GitHub</a></footer>
+
+<dialog id="lb" aria-label="Enlarged image"><button class="btn ghost" id="lbx">Close</button><img id="lbi" alt=""></dialog>
+<script src="script.js"></script>
+</body>
+</html>
